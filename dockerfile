@@ -1,3 +1,7 @@
+# Contents of dockerfile below,
+# adapted from: https://github.com/fangohr/octopus-in-docker ,
+# and informed by gpu build script distributed with the source code:  https://gitlab.com/octopus-code/octopus/-/raw/main/scripts/build/build_octopus_mpcdf.sh
+
 
 #Octopus-gpu with 11.7.1-devel-ubuntu20.04
 FROM nvcr.io/nvidia/cuda:11.7.1-devel-ubuntu20.04
@@ -82,9 +86,6 @@ RUN cat octopus-configlog-warnings
 
 # all in one line to make image smaller
 RUN make && make install && make clean && make distclean
-
-#RUN octopus --version > octopus-version
-#RUN octopus --version
 
 # offer directory for mounting container
 WORKDIR /io
